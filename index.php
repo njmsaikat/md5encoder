@@ -16,27 +16,22 @@ if ( isset($_GET['md5']) ) {
     $txt = "0123456789";
     $show = 15;
 
-    // Outer loop go go through the alphabet for the
-    // first position in our "possible" pre-hash
-    // text
-    for($i=0; $i<strlen($txt); $i++ ) {
-        $ch1 = $txt[$i];   // The first of two characters
 
-        // Our inner loop Not the use of new variables
-        // $j and $ch2 
+    for($i=0; $i<strlen($txt); $i++ ) {
+        $ch1 = $txt[$i];   
+
+
         for($j=0; $j<strlen($txt); $j++ ) {
             $ch2 = $txt[$j];
 
                 for($k=0; $k<strlen($txt); $k++ ) {
                     $ch3 = $txt[$k]; 
-                            // Our second character
+
                                 for($l=0; $l<strlen($txt); $l++ ) {
                                     $ch4 = $txt[$l]; 
-                                            // Concatenate the two characters together to 
-                                            // form the "possible" pre-hash text
+
                                             $try = $ch1.$ch2.$ch3.$ch4;
 
-                                            // Run the hash and then check to see if we match
                                             $check = hash('md5', $try);
                                             if ( $check == $md5 ) {
                                                 $goodtext = $try;
